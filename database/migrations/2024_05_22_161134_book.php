@@ -14,6 +14,8 @@ return new class extends Migration
         schema::create("book", function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->unsignedBigInteger("id_publisher");
+            $table->unsignedBigInteger("id_author");
             $table->foreign("id_publisher")->references("id")->on("publisher");
             $table->foreign("id_author")->references("id")->on("author");
         });

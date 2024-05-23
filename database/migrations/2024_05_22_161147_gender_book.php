@@ -13,8 +13,11 @@ return new class extends Migration
     {
         schema::create("gender_book", function (Blueprint $table) {
             $table->id();
-            $table->foreignId("id_book")->constrained("books");
-            $table->foreignId("id_gender")->constrained("genders");
+            $table->unsignedBigInteger("id_book");
+            $table->unsignedBigInteger("id_gender");
+            $table->foreign("id_book")->references("id")->on("book");
+            $table->foreign("id_gender")->references("id")->on("gender");
+//            $table->foreign("id_book")->constrained("books");
         });
     }
 
